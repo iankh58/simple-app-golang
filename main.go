@@ -5,10 +5,8 @@ import (
 	"fmt"
 	"os"
   
-	"github.com/gin-gonic/gin"
-  
-	"../simple-app-golang/controllers"
-	"../simple-app-golang/models"
+	"../simple-app-golang/configs"
+	"../simple-app-golang/routers"
 
 )
 
@@ -17,20 +15,11 @@ func main() {
 	fmt.Printf("Started at : %3v \n", time.Now())
   
 	//InitPostgres()
-	models.InitGormPostgres()
-	defer models.MPosGORM.Close()
-  
-	// Set the router as the default one shipped with Gin
-	gin.SetMode(gin.ReleaseMode)
-	router := gin.Default()
-  
-	// Setup route group for the API
-	api := router.Group("/api")
-  
-	api.POST("/users/edit", controllers.UserEdit)
-	api.GET("/users/id/:id", controllers.UserShowByID) 
+	configs.InitGormPostgres()
+	defer configs.MPosGORM.Close()
+	router := routers.InitRouter()
   
 	// Start and run the server
-	fmt.Printf("App listening at : 4000")
+	fmt.Printf("App listening at : 4000\n")
 	router.Run(":4000")
   }
