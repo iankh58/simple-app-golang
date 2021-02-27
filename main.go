@@ -1,9 +1,8 @@
 package main
 
 import (
-	"time"
 	"fmt"
-	"os"
+	"log"
   
 	"../simple-app-golang/configs"
 	"../simple-app-golang/routers"
@@ -11,15 +10,13 @@ import (
 )
 
 func main() {
-	os.Setenv("TZ", "Asia/Jakarta")
-	fmt.Printf("Started at : %3v \n", time.Now())
-  
 	//InitPostgres()
 	configs.InitGormPostgres()
 	defer configs.MPosGORM.Close()
 	router := routers.InitRouter()
   
 	// Start and run the server
-	fmt.Printf("App listening at : 4000\n")
-	router.Run(":4000")
+	port := "4000"
+	fmt.Printf("App listening on port "+port)
+	log.Fatal(router.Run(":"+port))
   }
