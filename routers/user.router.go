@@ -13,7 +13,7 @@ func InitRouter() *gin.Engine {
 	// Setup route group for the API
 	api := router.Group("/api")
 
-	api.POST("/users/process", controllers.Process)
+	api.PUT("/users/process", controllers.Process)
 
 	return router
 }

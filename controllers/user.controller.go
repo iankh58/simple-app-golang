@@ -19,12 +19,12 @@ func Process(c *gin.Context){
 	var user models.Users
   
 	if err := configs.MPosGORM.Model(&user).Where("type = ?", typ).Updates(models.Users{Username: utils.RandomString(10)}).Error; err != nil {
-		fmt.Printf("process error : %3v \n", err)
+		fmt.Printf("Process Error : %3v \n", err)
 		c.AbortWithStatus(http.StatusInternalServerError)
 		return
 	}
 	  
 	c.JSON(http.StatusOK, gin.H{
-	  "message": "process success",
+	  "message": "Process Success",
 	})
 }
