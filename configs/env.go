@@ -3,8 +3,8 @@ package configs
 const (
 	username = "postgres"
 	password = "qazwsxpol"
-	host = "localhost"
-	port = "5432"
-	dialect = "postgres"
-	dbname = "benchmark"
+	host     = "localhost"
+	port     = "5432"
+	dialect  = "postgres"
+	dbname   = "benchmark"
 )
