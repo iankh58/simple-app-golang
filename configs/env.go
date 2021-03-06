@@ -6,5 +6,5 @@ const (
 	host = "localhost"
 	port = "5432"
 	dialect = "postgres"
-	dbname = "simple-db"
+	dbname = "benchmark"
 )
