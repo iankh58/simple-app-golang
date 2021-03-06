@@ -29,7 +29,7 @@ func Process(c *gin.Context) {
 
 	if dbDatas != nil {
 		for _, dData := range dbDatas {
-			if err := configs.MPosGORM.Model(&dData).Where("key = ?", dData.Key).Updates(models.DbData{Content: utils.RandomString(10), UpdatedOn: time.Now()}).Error; err != nil {
+			if err := configs.MPosGORM.Model(&dData).Where("id = ?", dData.Id).Updates(models.DbData{Content: utils.RandomString(10), UpdatedOn: time.Now()}).Error; err != nil {
 				fmt.Printf("Process Error : %3v \n", err)
 				c.AbortWithStatus(http.StatusInternalServerError)
 				return
